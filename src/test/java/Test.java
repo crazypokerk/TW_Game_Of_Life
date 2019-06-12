@@ -53,4 +53,41 @@ public class Test {
 
   }
 
+  @org.junit.Test
+  public void test2() {
+    //测试isAlive方法 和 nextStatus方法
+
+    //初始化数组
+    int[][] test = new int[10][10];
+
+    for (int i = 0; i < test.length; i++) {
+      for (int j = 0; j < test[0].length; j++) {
+        test[i][j] = 0;
+      }
+    }
+
+    test[0][0] =1;
+    test[0][1] = 1;
+    test[1][0] = 1;
+    test[1][2] = 1;
+    test[2][5] = 1;
+    test[2][6] = 1;
+    test[3][3] = 1;
+    test[3][4] = 1;
+    test[3][5] = 1;
+    test[4][5] = 1;
+    test[3][2] = 1;
+
+
+    int res = Game_Of_Life.isAlive(test, 3, 4);
+    int res1 = Game_Of_Life.isAlive(test, 3, 6);
+    int res2 = Game_Of_Life.isAlive(test, 4, 3);
+
+    Assert.assertEquals(0,res);
+    Assert.assertEquals(0, res1);
+    Assert.assertEquals(1, res2);
+
+
+  }
+
 }
