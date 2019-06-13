@@ -41,7 +41,7 @@ public class CellUnit {
   public void randomCell() {
     for (int i = 1; i < maxLen - 1; i++)
       for (int j = 1; j < maxWid - 1; j++)
-        multi_array[i][j] = Math.random() > 0.5 ? 1 : 0;
+        multi_array[i][j] = Math.random() > 0.8 ? 1 : 0;
   }
 
   //清除所有细胞
@@ -116,39 +116,4 @@ public class CellUnit {
     return num;
   }
 
-
-//  public static void main(String[] args) {
-//    Scanner sc = new Scanner(System.in);
-//
-//    String next = sc.next();
-//
-//    CellUnit g = new CellUnit();
-//    int[][] test = new int[10][10];
-//
-//
-//    for (int i = 0; i < test.length; i++) {
-//      for (int j = 0; j < test[0].length; j++) {
-//        test[i][j] = 0;
-//      }
-//    }
-//
-//    test[3][3] =1;
-//    test[4][4] = 1;
-//    test[5][2] = 1;
-//    test[5][3] = 1;
-//    test[5][4] = 1;
-//
-//    for (int k = 0; k < 5; k++){
-//      test = g.nextStatus(test);
-//      for (int i = 0; i < test.length; i++) {
-//        for (int j = 0; j < test[0].length; j++) {
-//          System.out.print(test[i][j]);
-//        }
-//        System.out.println();
-//      }
-//
-//      System.out.println("===================");
-//    }
-//
-//  }
 }

@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bfaaa04-13e8-42b9-9ad1-85f84b23d004" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/GameUi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/GameUi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Sample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/CellUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/CellUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ui/GameUi$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ui/GameUi$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ui/GameUi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/util/CellUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/CellUnit.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,10 +47,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/util/CellUnit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="15" selection-end-column="29" />
+            <state relative-caret-position="740">
+              <caret line="46" column="10" lean-forward="true" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#623#919#0" />
               </folding>
             </state>
           </provider>
@@ -51,24 +60,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ui/GameUi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+            <state relative-caret-position="189">
+              <caret line="311" column="12" lean-forward="true" selection-start-line="311" selection-start-column="12" selection-end-line="311" selection-end-column="12" />
               <folding>
                 <element signature="method#GameUi#0;class#GameUi#0" />
-                <element signature="e#4673#4780#0" expanded="true" />
-                <element signature="e#4779#4780#0" expanded="true" />
-                <element signature="e#6416#7290#0" expanded="true" />
-                <element signature="e#7289#7290#0" expanded="true" />
+                <element signature="method#initGUI#0;class#GameUi#0" />
+                <element signature="e#4283#4390#0" expanded="true" />
+                <element signature="e#4389#4390#0" expanded="true" />
+                <element signature="e#6026#6900#0" expanded="true" />
+                <element signature="e#6899#6900#0" expanded="true" />
+                <element signature="method#getSample#0;class#GameUi#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/src.zip!/java/awt/Color.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="906" column="34" selection-start-line="906" selection-start-column="26" selection-end-line="906" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -76,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ui/Sample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+            <state relative-caret-position="359">
+              <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
             </state>
           </provider>
         </entry>
@@ -98,7 +100,14 @@
       <find>randomCe</find>
       <find>SAMPLE</find>
       <find>Color</find>
+      <find>new Color(218,52,117)</find>
+      <find>Color.white</find>
+      <find>isSel</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Color.white</replace>
+      <replace>new Color(226,114,172)</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -109,11 +118,11 @@
         <option value="$PROJECT_DIR$/src/main/java/util/CountLiveCell.java" />
         <option value="$PROJECT_DIR$/src/main/java/util/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/util/Game_Of_Life.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ui/Sample.java" />
-        <option value="$PROJECT_DIR$/src/main/java/util/CellUnit.java" />
         <option value="$PROJECT_DIR$/src/main/java/ui/GameUi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/util/CellUnit.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ui/Sample.java" />
       </list>
     </option>
   </component>
@@ -170,19 +179,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TW_Game_Of_Life" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TW_Game_Of_Life" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TW_Game_Of_Life" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TW_Game_Of_Life" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -300,7 +296,7 @@
       <option name="presentableId" value="Default" />
       <updated>1560317664989</updated>
       <workItem from="1560317668319" duration="10937000" />
-      <workItem from="1560386171058" duration="11736000" />
+      <workItem from="1560386171058" duration="17259000" />
     </task>
     <servers />
   </component>
@@ -337,7 +333,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23002000" />
+    <option name="totallyTimeSpent" value="28525000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -352,7 +348,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22237961" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16572239" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3512748" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -443,30 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/util/CellUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="15" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ui/Sample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/src.zip!/java/awt/Color.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -474,16 +446,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/util/CellUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="46" column="10" lean-forward="true" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#623#919#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ui/Sample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ui/GameUi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+        <state relative-caret-position="189">
+          <caret line="311" column="12" lean-forward="true" selection-start-line="311" selection-start-column="12" selection-end-line="311" selection-end-column="12" />
           <folding>
             <element signature="method#GameUi#0;class#GameUi#0" />
-            <element signature="e#4673#4780#0" expanded="true" />
-            <element signature="e#4779#4780#0" expanded="true" />
-            <element signature="e#6416#7290#0" expanded="true" />
-            <element signature="e#7289#7290#0" expanded="true" />
+            <element signature="method#initGUI#0;class#GameUi#0" />
+            <element signature="e#4283#4390#0" expanded="true" />
+            <element signature="e#4389#4390#0" expanded="true" />
+            <element signature="e#6026#6900#0" expanded="true" />
+            <element signature="e#6899#6900#0" expanded="true" />
+            <element signature="method#getSample#0;class#GameUi#0" />
           </folding>
         </state>
       </provider>

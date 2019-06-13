@@ -291,10 +291,10 @@ public class GameUi extends JFrame implements ActionListener {
             isSelected[i][j] = !isSelected[i][j];
             if (isSelected[i][j]) {
               new_array[i][j].setBackground(new Color(218,52,116));
-              grid[i + 1][j + 1] = 1;
+              grid[i][j] = 1;
             } else {
               new_array[i][j].setBackground(Color.white);
-              grid[i + 1][j + 1] = 0;
+              grid[i][j] = 0;
             }
             break;
           }
@@ -320,10 +320,10 @@ public class GameUi extends JFrame implements ActionListener {
       for (int j = 1; j < maxLength - 1; j++) {
         if (grid[i][j] == 1) {
           //活细胞
-          new_array[i - 1][j - 1].setBackground(new Color(218,52,116));
+          new_array[i][j].setBackground(new Color(218,52,116));
         } else {
           //死细胞
-          new_array[i - 1][j - 1].setBackground(Color.white);
+          new_array[i][j].setBackground(Color.white);
         }
       }
     }
