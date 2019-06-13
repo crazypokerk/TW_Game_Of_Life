@@ -1,5 +1,8 @@
 package ui;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import util.CellUnit;
 
 import javax.swing.*;
@@ -17,6 +20,8 @@ import java.nio.channels.FileChannel;
 public class GameUi extends JFrame implements ActionListener {
   private static GameUi frame;//静态初始化游戏
   private CellUnit cellUnit;//初始化细胞单元
+  @Setter(AccessLevel.PUBLIC)
+  @Getter(AccessLevel.PUBLIC)
   private int maxLength, maxWidth; //长和宽
   private JButton[][] new_array; //一个按钮表示一个细胞
   private boolean[][] isSelected;  //按钮（即细胞）是否被选中
@@ -26,16 +31,10 @@ public class GameUi extends JFrame implements ActionListener {
   private boolean running;//线程运行状态
   private Thread thread;//新建线程
   private boolean deadCell;//是否为活细胞
+  @Setter(AccessLevel.PUBLIC)
+  @Getter(AccessLevel.PUBLIC)
   private int speed = 1000;//初始化运行速度
 
-
-  private int getSpeed() {
-    return speed;
-  }
-
-  private void setSpeed(int speed) {
-    this.speed = speed;
-  }
 
   private GameUi(String name) {
     super(name);
@@ -44,22 +43,6 @@ public class GameUi extends JFrame implements ActionListener {
 
   public static void main(String[] arg) {
     frame = new GameUi("康威生命游戏 By XueYuKun&YinYu");
-  }
-
-  private int getMaxWidth() {
-    return maxWidth;
-  }
-
-  private void setMaxWidth(int maxWidth) {
-    this.maxWidth = maxWidth;
-  }
-
-  private int getMaxLength() {
-    return maxLength;
-  }
-
-  private void setMaxLength(int maxLength) {
-    this.maxLength = maxLength;
   }
 
   //初始化界面

@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Random;
-import java.util.Scanner;
 
 /**
  * @Date 2019/6/12 14:53
