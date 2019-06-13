@@ -41,11 +41,10 @@ public class CellUnit {
 
   //初始化细胞
   public void randomCell() {
-    for (int i = 1; i < maxLen-1; i++)
-      for (int j = 1; j < maxWid-1; j++)
+    for (int i = 1; i < maxLen - 1; i++)
+      for (int j = 1; j < maxWid - 1; j++)
         multi_array[i][j] = Math.random() > 0.5 ? 1 : 0;
   }
-
 
   //清除所有细胞
   public void killAllCell() {
@@ -61,7 +60,7 @@ public class CellUnit {
     int[][] res = new int[maxLen + 2][maxWid + 2];
     for (int i = 1; i <= maxLen; i++) {
       for (int j = 1; j <= maxWid; j++) {
-        int num = this.countNum(multi_array,i, j);
+        int num = this.countNum(multi_array, i, j);
         if (num == 2) {
           res[i][j] = multi_array[i][j];
         } else if (num == 3) {

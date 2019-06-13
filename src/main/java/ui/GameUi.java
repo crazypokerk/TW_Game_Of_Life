@@ -8,33 +8,32 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
+import java.io.*;
 import java.nio.channels.FileChannel;
 
 /**
  * @Date 2019/6/12 21:31
  */
 public class GameUi extends JFrame implements ActionListener {
-  private static GameUi frame;
-  private CellUnit cellUnit;
+  private static GameUi frame;//静态初始化游戏
+  private CellUnit cellUnit;//初始化细胞单元
   private int maxLength, maxWidth; //长和宽
   private JButton[][] new_array; //一个按钮表示一个细胞
   private boolean[][] isSelected;  //按钮（即细胞）是否被选中
-  private JButton OKEY, BUTTON_NOW_GENERATION, RANDOM_INIT_CELL, CLEAR_GENGARTION,SPPED_UP,SPEED_DOWN; //确定，当前代数，代数清零，分裂速度
-  private JButton SELECT_SAMPLE,CLEAR_CELL, NEXT_GENERATION, START, STOP, EXIT; //下一代，开始繁衍，暂停，退出
+  private JButton OKEY, BUTTON_NOW_GENERATION, RANDOM_INIT_CELL, CLEAR_GENGARTION, SPPED_UP, SPEED_DOWN; //确定，当前代数，代数清零，加速，减速
+  private JButton SELECT_SAMPLE, SAMPLE, CLEAR_CELL, NEXT_GENERATION, START, STOP, EXIT; //选择样例，示例，下一代，开始繁衍，暂停，退出
   private JComboBox lengthList, widthList;//长宽选择
-  private boolean running;
-  private Thread thread;
-  private boolean deadCell;
+  private boolean running;//线程运行状态
+  private Thread thread;//新建线程
+  private boolean deadCell;//是否为活细胞
+  private int speed = 1000;//初始化运行速度
 
-  private int speed = 1000;
 
-
-  public int getSpeed() {
+  private int getSpeed() {
     return speed;
   }
 
-  public void setSpeed(int speed) {
+  private void setSpeed(int speed) {
     this.speed = speed;
   }
 
@@ -44,7 +43,7 @@ public class GameUi extends JFrame implements ActionListener {
   }
 
   public static void main(String[] arg) {
-    frame = new GameUi("GameOfLife");
+    frame = new GameUi("康威生命游戏 By XueYuKun&YinYu");
   }
 
   private int getMaxWidth() {
@@ -63,6 +62,7 @@ public class GameUi extends JFrame implements ActionListener {
     this.maxLength = maxLength;
   }
 
+  //初始化界面
   private void initGUI() {
     if (maxWidth == 0) {
       maxWidth = 20;
@@ -71,7 +71,7 @@ public class GameUi extends JFrame implements ActionListener {
       maxLength = 35;
     }
 
-
+    //初始化细胞单元对象
     cellUnit = new CellUnit(maxLength, maxWidth);
 
     JPanel backPanel, centerPanel, bottomPanel;
@@ -87,8 +87,8 @@ public class GameUi extends JFrame implements ActionListener {
     isSelected = new boolean[maxWidth][maxLength];
     for (int i = 0; i < maxWidth; i++) {
       for (int j = 0; j < maxLength; j++) {
-        new_array[i][j] = new JButton(""); //按钮内容置空以表示细胞
-        new_array[i][j].setBackground(Color.orange); //初始时所有细胞均为死
+        new_array[i][j] = new JButton(""); //按钮内容置空表示细胞
+        new_array[i][j].setBackground(Color.black); //初始时所有细胞均为死细胞
         centerPanel.add(new_array[i][j]);
       }
     }
@@ -106,7 +106,8 @@ public class GameUi extends JFrame implements ActionListener {
     widthList.setSelectedIndex(maxWidth - 5);
 
     OKEY = new JButton("确定");
-    SELECT_SAMPLE = new JButton("选择样例");
+    //SELECT_SAMPLE = new JButton("选择样例");
+    SAMPLE = new JButton("示例");
     jNowGeneration = new JLabel("当前代数：");
     BUTTON_NOW_GENERATION = new JButton("" + cellUnit.getNowGeneration());//Buttom不能直接添加int，故采用此方式
     BUTTON_NOW_GENERATION.setEnabled(false);
@@ -125,7 +126,8 @@ public class GameUi extends JFrame implements ActionListener {
     bottomPanel.add(jWidth);
     bottomPanel.add(widthList);
     bottomPanel.add(OKEY);
-    bottomPanel.add(SELECT_SAMPLE);
+    //bottomPanel.add(SELECT_SAMPLE);
+    bottomPanel.add(SAMPLE);
     bottomPanel.add(jNowGeneration);
     bottomPanel.add(BUTTON_NOW_GENERATION);
     bottomPanel.add(CLEAR_GENGARTION);
@@ -138,9 +140,10 @@ public class GameUi extends JFrame implements ActionListener {
     bottomPanel.add(STOP);
     bottomPanel.add(EXIT);
 
-    SELECT_SAMPLE.setBounds(400, 200, 100, 100);
-    SELECT_SAMPLE.setVisible(true);
-    SELECT_SAMPLE.addActionListener(this);
+
+//    SELECT_SAMPLE.setBounds(400, 200, 100, 100);
+//    SELECT_SAMPLE.setVisible(true);
+//    SELECT_SAMPLE.addActionListener(this);
 
     // 设置窗口
     this.setSize(1280, 720);
@@ -156,6 +159,8 @@ public class GameUi extends JFrame implements ActionListener {
     });
     OKEY.addActionListener(this);
     CLEAR_GENGARTION.addActionListener(this);
+    //SELECT_SAMPLE.addActionListener(this);
+    SAMPLE.addActionListener(this);
     SPPED_UP.addActionListener(this);
     SPEED_DOWN.addActionListener(this);
     RANDOM_INIT_CELL.addActionListener(this);
@@ -172,6 +177,9 @@ public class GameUi extends JFrame implements ActionListener {
   }
 
 
+  /*
+    监视器监控按钮事件
+   */
   public void actionPerformed(ActionEvent event) {
     if (event.getSource() == OKEY) { //确定
       //设置的初始最小值为5，故加上5
@@ -201,7 +209,6 @@ public class GameUi extends JFrame implements ActionListener {
       running = false;
       thread = null;
     } else if (event.getSource() == START) {
-
       //开始
       running = true;
       thread = new Thread(new Runnable() {
@@ -244,17 +251,45 @@ public class GameUi extends JFrame implements ActionListener {
       frame.setSpeed(speed += 100);
     } else if (event.getSource() == SELECT_SAMPLE) {
       JFileChooser jFileChooser = new JFileChooser();
+      JTextArea jta = new JTextArea(5, 3);
       jFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
       jFileChooser.showDialog(new JLabel(), "选择");
       File file = jFileChooser.getSelectedFile();
       if (file.isDirectory()) {
         JOptionPane.showMessageDialog(null, "不能选择文件夹！", "错误", JOptionPane.ERROR_MESSAGE);
       } else if (file.isFile()) {
-        System.out.println("文件:" + file.getAbsolutePath());
+        String fileName = file.getName();
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+          fr = new FileReader(fileName);
+          br = new BufferedReader(fr);
+          String str;
+          while ((str = br.readLine()) != null) {
+            jta.append(str + "\n");
+          }
+        } catch (FileNotFoundException e) {
+          e.printStackTrace();
+        } catch (IOException e) {
+          e.printStackTrace();
+        } finally {
+          try {
+            br.close();
+            fr.close();
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+        }
       }
     } else if (event.getSource() == NEXT_GENERATION) {
       //下一代
       makeNextGeneration();
+      running = false;
+      thread = null;
+    } else if (event.getSource() == SAMPLE) {
+
+      cellUnit.setMulti_array(Sample.init());
+      getSample();
       running = false;
       thread = null;
     } else if (event.getSource() == STOP) {
@@ -272,10 +307,10 @@ public class GameUi extends JFrame implements ActionListener {
           if (event.getSource() == new_array[i][j]) {
             isSelected[i][j] = !isSelected[i][j];
             if (isSelected[i][j]) {
-              new_array[i][j].setBackground(Color.BLUE);
+              new_array[i][j].setBackground(Color.white);
               grid[i + 1][j + 1] = 1;
             } else {
-              new_array[i][j].setBackground(Color.orange);
+              new_array[i][j].setBackground(Color.black);
               grid[i + 1][j + 1] = 0;
             }
             break;
@@ -286,6 +321,7 @@ public class GameUi extends JFrame implements ActionListener {
     }
   }
 
+  //细胞开始分裂
   private void makeNextGeneration() {
     cellUnit.division();
     repaint();
@@ -294,20 +330,36 @@ public class GameUi extends JFrame implements ActionListener {
     BUTTON_NOW_GENERATION.setText("" + cellUnit.getNowGeneration());
   }
 
+  //画面展示
   private void viewCellUnit() {
     int[][] grid = cellUnit.getMulti_array();
-    for (int i = 1; i < maxWidth-1; i++) {
-      for (int j = 1; j < maxLength-1; j++) {
+    for (int i = 1; i < maxWidth - 1; i++) {
+      for (int j = 1; j < maxLength - 1; j++) {
         if (grid[i][j] == 1) {
           //活细胞
-          new_array[i-1][j-1].setBackground(Color.BLUE);
+          new_array[i - 1][j - 1].setBackground(Color.white);
         } else {
           //死细胞
-          new_array[i-1][j-1].setBackground(Color.orange);
+          new_array[i - 1][j - 1].setBackground(Color.black);
         }
       }
     }
-//    new_array[0][0].setBackground(Color.black);
+  }
+
+  //获取样例
+  private void getSample() {
+    int[][] grid = Sample.init();
+    for (int i = 1; i < 18; i++) {
+      for (int j = 1; j < 38; j++) {
+        if (grid[i][j] == 1) {
+          //活细胞
+          new_array[i - 1][j - 1].setBackground(Color.white);
+        } else {
+          //死细胞
+          new_array[i - 1][j - 1].setBackground(Color.black);
+        }
+      }
+    }
   }
 }
 
