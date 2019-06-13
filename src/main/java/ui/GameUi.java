@@ -71,7 +71,7 @@ public class GameUi extends JFrame implements ActionListener {
     for (int i = 0; i < maxWidth; i++) {
       for (int j = 0; j < maxLength; j++) {
         new_array[i][j] = new JButton(""); //按钮内容置空表示细胞
-        new_array[i][j].setBackground(Color.black); //初始时所有细胞均为死细胞
+        new_array[i][j].setBackground(Color.white); //初始时所有细胞均为死细胞
         centerPanel.add(new_array[i][j]);
       }
     }
@@ -152,13 +152,13 @@ public class GameUi extends JFrame implements ActionListener {
     START.addActionListener(this);
     STOP.addActionListener(this);
     EXIT.addActionListener(this);
+
     for (int i = 0; i < maxWidth; i++) {
       for (int j = 0; j < maxLength; j++) {
         new_array[i][j].addActionListener(this);
       }
     }
   }
-
 
   /*
     监视器监控按钮事件
@@ -290,10 +290,10 @@ public class GameUi extends JFrame implements ActionListener {
           if (event.getSource() == new_array[i][j]) {
             isSelected[i][j] = !isSelected[i][j];
             if (isSelected[i][j]) {
-              new_array[i][j].setBackground(Color.white);
+              new_array[i][j].setBackground(new Color(218,52,116));
               grid[i + 1][j + 1] = 1;
             } else {
-              new_array[i][j].setBackground(Color.black);
+              new_array[i][j].setBackground(Color.white);
               grid[i + 1][j + 1] = 0;
             }
             break;
@@ -320,10 +320,10 @@ public class GameUi extends JFrame implements ActionListener {
       for (int j = 1; j < maxLength - 1; j++) {
         if (grid[i][j] == 1) {
           //活细胞
-          new_array[i - 1][j - 1].setBackground(Color.white);
+          new_array[i - 1][j - 1].setBackground(new Color(218,52,116));
         } else {
           //死细胞
-          new_array[i - 1][j - 1].setBackground(Color.black);
+          new_array[i - 1][j - 1].setBackground(Color.white);
         }
       }
     }
@@ -336,10 +336,10 @@ public class GameUi extends JFrame implements ActionListener {
       for (int j = 1; j < 38; j++) {
         if (grid[i][j] == 1) {
           //活细胞
-          new_array[i - 1][j - 1].setBackground(Color.white);
+          new_array[i - 1][j - 1].setBackground(new Color(218,52,116));
         } else {
           //死细胞
-          new_array[i - 1][j - 1].setBackground(Color.black);
+          new_array[i - 1][j - 1].setBackground(Color.white);
         }
       }
     }
